@@ -1,0 +1,13 @@
+{
+  "name": "warzone-discord-bot",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "dependencies": {
+    "call-of-duty-api": "^1.3.1",
+    "discord.js": "^12.5.1",
+    "services": "link:./src/services/",
+    "src": "link:./src"
+  }
+}
