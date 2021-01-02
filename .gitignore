@@ -6,3 +6,4 @@
 !.yarn/plugins
 !.yarn/sdks
 !.yarn/versions
+src/constants/login-info.js
