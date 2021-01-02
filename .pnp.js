@@ -37,6 +37,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {
           "packageLocation": "./",
           "packageDependencies": [
+            ["axios", "npm:0.21.1"],
             ["call-of-duty-api", "npm:1.3.1"],
             ["discord.js", "npm:12.5.1"],
             ["services", "link:./src/services/::locator=warzone-discord-bot%40workspace%3A."],
@@ -308,6 +309,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",
           "packageDependencies": [
             ["warzone-discord-bot", "workspace:."],
+            ["axios", "npm:0.21.1"],
             ["call-of-duty-api", "npm:1.3.1"],
             ["discord.js", "npm:12.5.1"],
             ["services", "link:./src/services/::locator=warzone-discord-bot%40workspace%3A."],

@@ -1,6 +1,8 @@
-const loginInfo = {
-  username: 'username',
-  password: 'password',
+const gameModes = {
+  br_brquads: 'BR Quads',
+  br_brtrios: 'BR Trios',
+  br_brduos: 'BR Duos',
+  br_brsolo: 'BR Solo',
 }
 
 const platforms = {
@@ -12,7 +14,9 @@ const platforms = {
   uno: 'uno'
 }
 
+
 module.exports = {
+  gameModes: gameModes,
   loginInfo: loginInfo,
   platforms: platforms,
 };

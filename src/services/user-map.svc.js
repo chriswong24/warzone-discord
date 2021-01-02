@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 /**
- * userMap: {"discordUsername": {"codUsername": "username", "platform": "platform"}}
+ * userMap: {"discordUsername": {"gamertag": "username", "platform": "platform"}}
  */
 function UserMap() {
   this.userMap = this._intializeUserMap();
@@ -30,14 +30,14 @@ UserMap.prototype.saveUserMap = function() {
 /**
  * Add user to cached user map object and also write to json file.
  */
-UserMap.prototype.registerUser = function(discordUsername, codUsername, platform) {
-  this.userMap[discordUsername] = {'codUsername': codUsername, 'platform': platform};
+UserMap.prototype.registerUser = function(discordUsername, gamertag, platform) {
+  this.userMap[discordUsername] = {'gamertag': gamertag, 'platform': platform};
   return this.saveUserMap();
 }
 
 /**
  * @param discordUsername - users discord name
- * @return Object with codUsername and platform {codUsername: "codUsername", platform "platform"}
+ * @return Object with gamertag and platform {gamertag: "gamertag", platform "platform"}
  */
 UserMap.prototype.getUser = function(discordUsername) {
   return this.userMap[discordUsername];
