@@ -40,6 +40,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["axios", "npm:0.21.1"],
             ["call-of-duty-api", "npm:1.3.1"],
             ["discord.js", "npm:12.5.1"],
+            ["dotenv", "npm:8.2.0"],
             ["lodash", "npm:4.17.20"],
             ["services", "link:./src/services/::locator=warzone-discord-bot%40workspace%3A."],
             ["src", "link:./src::locator=warzone-discord-bot%40workspace%3A."]
@@ -163,6 +164,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["setimmediate", "npm:1.0.5"],
             ["tweetnacl", "npm:1.0.3"],
             ["ws", "virtual:e8b380c863850045a09fce6a1a72065e59ee06032967e3a05d31d31a6b12f36728a27d7aa0dd96dbe022359b27ded736a360a4131e9d020175782aee48634e4d#npm:7.4.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["dotenv", [
+        ["npm:8.2.0", {
+          "packageLocation": "./.yarn/cache/dotenv-npm-8.2.0-6b21df4d37-16cb89cbd7.zip/node_modules/dotenv/",
+          "packageDependencies": [
+            ["dotenv", "npm:8.2.0"]
           ],
           "linkType": "HARD",
         }]
@@ -322,6 +332,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["axios", "npm:0.21.1"],
             ["call-of-duty-api", "npm:1.3.1"],
             ["discord.js", "npm:12.5.1"],
+            ["dotenv", "npm:8.2.0"],
             ["lodash", "npm:4.17.20"],
             ["services", "link:./src/services/::locator=warzone-discord-bot%40workspace%3A."],
             ["src", "link:./src::locator=warzone-discord-bot%40workspace%3A."]

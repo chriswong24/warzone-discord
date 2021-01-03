@@ -8,3 +8,4 @@
 !.yarn/versions
 src/constants/login-info.js
 server/token.txt
+.env

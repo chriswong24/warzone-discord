@@ -1,6 +1,9 @@
 {
   "name": "warzone-discord-bot",
   "version": "1.0.0",
+  "engines": {
+    "node": "10.x"
+  },
   "scripts": {
     "start": "node server/server.js"
   },
@@ -8,6 +11,7 @@
     "axios": "^0.21.1",
     "call-of-duty-api": "^1.3.1",
     "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
     "lodash": "^4.17.20",
     "services": "link:./src/services/",
     "src": "link:./src"

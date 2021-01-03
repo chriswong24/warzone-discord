@@ -1,12 +1,11 @@
 const codApi = require('call-of-duty-api')();
 const axios = require('axios');
 const constants = require('../constants/constants.js');
-const loginInfo = require('../constants/login-info.js');
 const sortBy = require('lodash/sortBy'); 
 
 async function login() {
   try {
-    await codApi.login(loginInfo.username, loginInfo.password);
+    await codApi.login(process.env.COD_USERNAME, process.env.COD_PASSWORD);
     console.log('Successfully logged into COD Api');
   } catch (err) {
     console.log(`Unable to login to COD Api: ${err}`);

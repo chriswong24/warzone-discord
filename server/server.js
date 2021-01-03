@@ -1,7 +1,7 @@
+require('dotenv').config();
 const discord = require('discord.js');
-const fs = require('fs');
 const client = new discord.Client();
-const token = fs.readFileSync('server/token.txt').toString();
+const token = process.env.DISCORD_TOKEN;
 const codApi = require('src/services/cod.svc.js');
 const CommandRouter = require('src/services/commands.js');
 
