@@ -14,7 +14,6 @@
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
     "lodash": "^4.17.20",
-    "semver": "^7.3.4",
     "services": "link:./src/services/",
     "src": "link:./src"
   }
