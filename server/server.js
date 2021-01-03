@@ -20,7 +20,8 @@ client.on('message', async (message) => {
     const command = messageArgs[0];
     const args = messageArgs.slice(1);
     const author = message.author.username;
-    const msg = await commandRouter.getCommandMessage(author, command, args);
-    message.channel.send(msg);
+    const response = await commandRouter.getCommandMessage(author, command, args);
+    const options = response.options || {};
+    message.channel.send(response.msg, options);
   }
 });

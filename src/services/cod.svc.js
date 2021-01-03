@@ -2,6 +2,7 @@ const codApi = require('call-of-duty-api')();
 const axios = require('axios');
 const constants = require('../constants/constants.js');
 const loginInfo = require('../constants/login-info.js');
+const sortBy = require('lodash/sortBy'); 
 
 async function login() {
   try {
@@ -10,6 +11,61 @@ async function login() {
   } catch (err) {
     console.log(`Unable to login to COD Api: ${err}`);
   }
+}
+
+async function weeklyStats(gamertag, platform) {
+  try {
+    const weeklyData = await codApi.MWweeklystats(gamertag, platform);
+    const filteredWeeklyStats = _filterWeeklyStats(weeklyData.wz.mode);
+    return _generateWeeklyStatsString(filteredWeeklyStats);
+  } catch (err) {
+    console.log(`Unable to fetch weekly data: ${err}`);
+    return 'There was an error fetching weekly data';
+  }
+}
+
+function _filterWeeklyStats(weeklyStats) {
+  let filteredWeeklyStats = [];
+  for (key in weeklyStats) {
+    filteredWeeklyStats.push(Object.assign({mode: key}, _filterWeeklyCategory(weeklyStats[key])));
+  }
+  filteredWeeklyStats = sortBy(filteredWeeklyStats, (weeklyStat) => {
+    return constants.gameModePrecedence[weeklyStat.mode];
+  });
+  return filteredWeeklyStats;
+}
+
+function _filterWeeklyCategory(weeklyCategory) {
+  return {
+    kills: weeklyCategory.properties.kills,
+    deaths: weeklyCategory.properties.deaths,
+    kdRatio: weeklyCategory.properties.kdRatio.toFixed(2),
+    damageDone: weeklyCategory.properties.damageDone,
+    damageTaken: weeklyCategory.properties.damageTaken,
+    gulagRatio: ((weeklyCategory.properties.gulagKills / 
+                (weeklyCategory.properties.gulagDeaths + weeklyCategory.properties.gulagKills)) *
+                100.0).toFixed(2),
+    matchesPlayed: weeklyCategory.properties.matchesPlayed,
+  }
+}
+
+function _generateWeeklyStatsString(weeklyStats) {
+  let weeklyStatsString = '';
+  weeklyStats.forEach((category) => {
+    weeklyStatsString += `
+# ${constants.gameModes[category.mode]} #
+Kills: ${category.kills}
+Deaths: ${category.deaths}
+K/D: ${category.kdRatio}
+Damage Done: ${category.damageDone}
+Damage Taken: ${category.damageTaken}
+Gulag Win Rate: ${category.gulagRatio}%
+Matches Played: ${category.matchesPlayed}
+`
+  });
+  return `\`\`\`markdown
+${weeklyStatsString}
+\`\`\``;
 }
 
 /**
@@ -82,4 +138,5 @@ function _generateDateString(utcSeconds) {
 module.exports = {
   login,
   matchData,
+  weeklyStats,
 }

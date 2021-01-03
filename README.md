@@ -1,5 +1,9 @@
-### Pew Pew Bot
+# Pew Pew Bot
 
-# In order to run this bot, you'll need to setup a discord bot and add your bot's token in a file at token.txt
+Discord bot written in NodeJS that hits the Call of Duty API to get warzone stats.
 
-# You'll also need to create a username / password file in src/constants/login-info
+#### Usage
+* Setup a discord bot, add the bot's token to server/token.txt
+* Add login info to a file at src/constants/login-info.js
+* yarn install
+* yarn start

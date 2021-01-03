@@ -40,6 +40,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["axios", "npm:0.21.1"],
             ["call-of-duty-api", "npm:1.3.1"],
             ["discord.js", "npm:12.5.1"],
+            ["lodash", "npm:4.17.20"],
             ["services", "link:./src/services/::locator=warzone-discord-bot%40workspace%3A."],
             ["src", "link:./src::locator=warzone-discord-bot%40workspace%3A."]
           ],
@@ -195,6 +196,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["lodash", [
+        ["npm:4.17.20", {
+          "packageLocation": "./.yarn/cache/lodash-npm-4.17.20-c0db62021c-c62101d250.zip/node_modules/lodash/",
+          "packageDependencies": [
+            ["lodash", "npm:4.17.20"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["mime-db", [
         ["npm:1.44.0", {
           "packageLocation": "./.yarn/cache/mime-db-npm-1.44.0-d6ab7b4e20-b4e3b21414.zip/node_modules/mime-db/",
@@ -312,6 +322,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["axios", "npm:0.21.1"],
             ["call-of-duty-api", "npm:1.3.1"],
             ["discord.js", "npm:12.5.1"],
+            ["lodash", "npm:4.17.20"],
             ["services", "link:./src/services/::locator=warzone-discord-bot%40workspace%3A."],
             ["src", "link:./src::locator=warzone-discord-bot%40workspace%3A."]
           ],
