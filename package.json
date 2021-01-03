@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "engines": {
     "node": "10.x",
-    "npm": "6.14.x",
-    "yarn": ">=1 <2"
+    "npm": "6.14.x"
   },
   "scripts": {
     "start": "yarn node server/server.js"
@@ -15,6 +14,7 @@
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
     "lodash": "^4.17.20",
+    "semver": "^7.3.4",
     "services": "link:./src/services/",
     "src": "link:./src"
   }
