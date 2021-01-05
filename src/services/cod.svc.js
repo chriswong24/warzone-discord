@@ -79,13 +79,14 @@ async function matchData(gamertag, platform) {
     const matchID = latestMatch.matchID;
     const endTimeString = _generateDateString(latestMatch.utcEndSeconds);
     const gameMode = constants.gameModes[latestMatch.mode];
+    const placement = _appendOrdinalSuffix(latestMatch.playerStats.teamPlacement);
 
     const codMatchDataUrl = `https://www.callofduty.com/api/papi-client/crm/cod/v2/title/mw/platform/battle/fullMatch/wz/${matchID}/it`
     const matchData = await axios.get(codMatchDataUrl);
     const completeTeamData = matchData.data.data.allPlayers.filter((individual) => individual.player.team === teamID);
 
     const filteredTeamData = _filterTeamData(completeTeamData);
-    return _generateMatchDataString(filteredTeamData, endTimeString, gameMode);
+    return _generateMatchDataString(filteredTeamData, endTimeString, gameMode, placement);
 
   } catch (err) {
     console.log(`Unable to fetch match data for ${gamertag}[${platform}] - ${err}`);
@@ -105,14 +106,14 @@ function _filterTeamData(completeTeamData) {
   }));
 }
 
-function _generateMatchDataString(filteredTeamData, endTimeString, gameMode) {
-  const titleString = `${gameMode} ${endTimeString}`
+function _generateMatchDataString(filteredTeamData, endTimeString, gameMode, placement) {
+  const titleString = `${gameMode} - ${endTimeString}`
   const titleDivider = '='.repeat(titleString.length);
+  const placementString = `Placement: ${placement}`;
   let userGameDataString = '';
 
   filteredTeamData.forEach((data) => {
-    userGameDataString += `
-# [${data.clantag}] ${data.username} #
+    userGameDataString += `# [${data.clantag}] ${data.username} #
 Kills: ${data.kills}
 Deaths: ${data.deaths}
 Damage Done: ${data.damageDone}
@@ -122,6 +123,8 @@ Damage Taken: ${data.damageTaken}
   return `\`\`\`markdown
 ${titleString}
 ${titleDivider}
+
+${placementString}
   
 ${userGameDataString}
 \`\`\`
@@ -131,7 +134,23 @@ ${userGameDataString}
 function _generateDateString(utcSeconds) {
   const date = new Date(0);
   date.setUTCSeconds(utcSeconds);
-  return date.toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', hour12: true});
+  return date.toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', hour12: true, timeZone: 'America/New_York'});
+}
+
+// Taken from stackoverflow.com/questions/13627308/add-st-nd-rd-and-th-ordinal-suffix-to-a-number
+function _appendOrdinalSuffix(num) {
+  const j = num % 10;
+  const k = num % 100;
+  if (j == 1 && k != 11) {
+    return `${num}st`;
+  }
+  if (j == 2 && k != 12) {
+    return `${num}nd`;
+  }
+  if (j == 3 && k != 13) {
+    return `${num}rd`;
+  }
+  return `${num}th`;
 }
 
 module.exports = {
