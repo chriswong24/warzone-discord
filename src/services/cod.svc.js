@@ -98,7 +98,7 @@ async function matchData(gamertag, platform) {
 function _filterTeamData(completeTeamData) {
   return completeTeamData.map((playerObject) => ({
     username: playerObject.player.username,
-    clantag: playerObject.player.clantag,
+    clantag: playerObject.player.clantag ? `[${playerObject.player.clantag}]`: '',
     kills: playerObject.playerStats.kills,
     deaths: playerObject.playerStats.deaths,
     damageDone: playerObject.playerStats.damageDone,
