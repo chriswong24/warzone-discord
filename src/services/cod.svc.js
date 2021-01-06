@@ -113,7 +113,7 @@ function _generateMatchDataString(filteredTeamData, endTimeString, gameMode, pla
   let userGameDataString = '';
 
   filteredTeamData.forEach((data) => {
-    userGameDataString += `# [${data.clantag}] ${data.username} #
+    userGameDataString += `# ${data.clantag} ${data.username} #
 Kills: ${data.kills}
 Deaths: ${data.deaths}
 Damage Done: ${data.damageDone}
