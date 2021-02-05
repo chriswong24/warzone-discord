@@ -27,6 +27,8 @@ function _help(author, args) {
 !pew help - list commands
 
 !pew register <username> <platform> - register username to specific discord user
+  - You'll need to make your profile public in order for the api to fetch stats
+    - https://cod.tracker.gg/cold-war/articles/how-to-public-stats 
   - You will need to do this in order to fetch stats for yourself
   - platform <xbl/psn/battle/steam/acti>
 
@@ -59,7 +61,7 @@ function _register(author, args) {
   if (args.length != 2) {
     msg = `Error: Invalid usage of !pew register. You need to supply the full username and platform
 
-  !pew register <username> <xbox|psn|pc>`
+  !pew register <username> <xbox|psn|battle>`
   } else {
     msg = this.userMap.registerUser(author, args[0], args[1]) ? 
     `Successfully linked ${author} to ${args[0]} on ${args[1]}` :

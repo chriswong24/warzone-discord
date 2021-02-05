@@ -56,8 +56,8 @@ function _generateWeeklyStatsString(weeklyStats) {
 Kills: ${category.kills}
 Deaths: ${category.deaths}
 K/D: ${category.kdRatio}
-Damage Done: ${category.damageDone}
-Damage Taken: ${category.damageTaken}
+Avg Damage Done: ${category.damageDone / category.matchesPlayed}
+Avg Damage Taken ${category.damageTaken / category.matchesPlayed}
 Gulag Win Rate: ${category.gulagRatio}%
 Matches Played: ${category.matchesPlayed}
 `
@@ -77,16 +77,24 @@ async function matchData(gamertag, platform) {
     const latestMatch = personalMatchData.matches[0];
     const teamID = latestMatch.player.team;
     const matchID = latestMatch.matchID;
-    const endTimeString = _generateDateString(latestMatch.utcEndSeconds);
+    const endTime = _generateDateString(latestMatch.utcEndSeconds);
     const gameMode = constants.gameModes[latestMatch.mode];
     const placement = _appendOrdinalSuffix(latestMatch.playerStats.teamPlacement);
+    const originalUser = latestMatch.player.username;
 
     const codMatchDataUrl = `https://www.callofduty.com/api/papi-client/crm/cod/v2/title/mw/platform/battle/fullMatch/wz/${matchID}/it`
     const matchData = await axios.get(codMatchDataUrl);
     const completeTeamData = matchData.data.data.allPlayers.filter((individual) => individual.player.team === teamID);
 
     const filteredTeamData = _filterTeamData(completeTeamData);
-    return _generateMatchDataString(filteredTeamData, endTimeString, gameMode, placement);
+    const latestMatchMetadata = {
+      matchID,
+      endTime,
+      gameMode,
+      placement,
+      originalUser,
+    }
+    return _generateMatchDataString(filteredTeamData, latestMatchMetadata);
 
   } catch (err) {
     console.log(`Unable to fetch match data for ${gamertag}[${platform}] - ${err}`);
@@ -106,10 +114,12 @@ function _filterTeamData(completeTeamData) {
   }));
 }
 
-function _generateMatchDataString(filteredTeamData, endTimeString, gameMode, placement) {
-  const titleString = `${gameMode} - ${endTimeString}`
+function _generateMatchDataString(filteredTeamData, matchData) {
+  const titleString = `${matchData.gameMode} - ${matchData.endTime}`
   const titleDivider = '='.repeat(titleString.length);
-  const placementString = `Placement: ${placement}`;
+  const placementString = `Placement: ${matchData.placement}`;
+  // TODO: Insert Match ID Here?  
+  const sbmmUrl = `https://sbmmwarzone.com/lobby/${matchData.matchID}/player/${matchData.originalUser}`
   let userGameDataString = '';
 
   filteredTeamData.forEach((data) => {
@@ -128,6 +138,7 @@ ${placementString}
   
 ${userGameDataString}
 \`\`\`
+${sbmmUrl}
 `
 }
 
