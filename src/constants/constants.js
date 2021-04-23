@@ -27,7 +27,47 @@ const platforms = {
   uno: 'uno'
 }
 
+const currentSeason = 2;
+
+const seasonEpochTimestamps = {
+  season1Start: 1608076800000,
+  season1End:  1614211200000,
+  season2Start: 1614211200000,
+  season2End: Date.now(),
+}
+
 const dropZones = [
+  {name: 'Airport', image: 'src/images/warzone2-airport.png'},
+  {name: 'Array', image: 'src/images/warzone2-array.png'},
+  {name: 'ATC', image: 'src/images/warzone2-atc.png'},
+  {name: 'Boneyard', image: 'src/images/warzone2-boneyard.png'},
+  {name: 'Bridge', image: 'src/images/warzone2-bridge.png'},
+  {name: 'Downtown', image: 'src/images/warzone2-downtown.png'},
+  {name: 'Factory', image: 'src/images/warzone2-factory.png'},
+  {name: 'Farmland', image: 'src/images/warzone2-farmland.png'},
+  {name: 'Graveyard', image: 'src/images/warzone2-graveyard.png'},
+  {name: 'Henrietta', image: 'src/images/warzone2-henrietta.png'},
+  {name: 'Hills', image: 'src/images/warzone2-hills.png'},
+  {name: 'Hospital', image: 'src/images/warzone2-hospital.png'},
+  {name: 'Lumber', image: 'src/images/warzone2-lumber.png'},
+  {name: 'Military Base', image: 'src/images/warzone2-military-base.png'},
+  {name: 'Hotel South of Military Base', image: 'src/images/warzone2-military-hotel.png'},
+  {name: 'Park', image: 'src/images/warzone2-park.png'},
+  {name: 'Port', image: 'src/images/warzone2-port.png'},
+  {name: 'Prison', image: 'src/images/warzone2-prison.png'},
+  {name: 'Promenade East', image: 'src/images/warzone2-promenade-east.png'},
+  {name: 'Promenade West', image: 'src/images/warzone2-promenade-west.png'},
+  {name: 'Riverside', image: 'src/images/warzone2-riverside.png'},
+  {name: 'Salt Mine', image: 'src/images/warzone2-salt-mine.png'},
+  {name: 'Stadium', image: 'src/images/warzone2-stadium.png'},
+  {name: 'Storage Town', image: 'src/images/warzone2-storage-town.png'},
+  {name: 'Summit', image: 'src/images/warzone2-summit.png'},
+  {name: 'Superstore', image: 'src/images/warzone2-superstore.png'},
+  {name: 'Train Station', image: 'src/images/warzone2-train-station.png'},
+  {name: 'TV Station', image: 'src/images/warzone2-tv-station.png'},
+];
+
+const oldDropZones = [
   {name: 'Dam', image: 'src/images/warzone-dam.png'},
   {name: 'Military Base', image: 'src/images/warzone-military-base.png'},
   {name: 'Quarry', image: 'src/images/warzone-quarry.png'},
@@ -61,8 +101,10 @@ const dropZones = [
 
 
 module.exports = {
-  gameModes: gameModes,
-  gameModePrecedence: gameModePrecedence,
-  platforms: platforms,
-  dropZones: dropZones,
+  currentSeason,
+  dropZones,
+  gameModePrecedence,
+  gameModes,
+  platforms,
+  seasonEpochTimestamps
 };
