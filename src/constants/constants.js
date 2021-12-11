@@ -37,6 +37,24 @@ const seasonEpochTimestamps = {
 }
 
 const dropZones = [
+  {name: 'Airfield', image: 'src/images/caldera-airfield.png'},
+  {name: 'Arsenal', image: 'src/images/caldera-arsenal.png'},
+  {name: 'Beachhead', image: 'src/images/caldera-beachhead.png'},
+  {name: 'Capital', image: 'src/images/caldera-capital.png'},
+  {name: 'Docks', image: 'src/images/caldera-docks.png'},
+  {name: 'Fields', image: 'src/images/caldera-fields.png'},
+  {name: 'Lagoon', image: 'src/images/caldera-lagoon.png'},
+  {name: 'Mines', image: 'src/images/caldera-mines.png'},
+  {name: 'Peak', image: 'src/images/caldera-peak.png'},
+  {name: 'Powerplant', image: 'src/images/caldera-powerplant.png'},
+  {name: 'Resort', image: 'src/images/caldera-resort.png'},
+  {name: 'Ruins', image: 'src/images/caldera-ruins.png'},
+  {name: 'Runway', image: 'src/images/caldera-runway.png'},
+  {name: 'Subpen', image: 'src/images/caldera-subpen.png'},
+  {name: 'Village', image: 'src/images/caldera-village.png'},
+]
+
+const verdanskDropZones = [
   {name: 'Airport', image: 'src/images/warzone2-airport.png'},
   {name: 'Array', image: 'src/images/warzone2-array.png'},
   {name: 'ATC', image: 'src/images/warzone2-atc.png'},
