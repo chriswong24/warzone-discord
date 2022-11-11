@@ -36,6 +36,28 @@ const seasonEpochTimestamps = {
   season2End: Date.now(),
 }
 
+const alMazrahDropZones = [
+  {name: 'Ahkdar Village', image: 'src/images/al-ahkdar-village.png'},
+  {name: 'Airport', image: 'src/images/al-airport.png'},
+  {name: 'Caves', image: 'src/images/al-caves.png'},
+  {name: 'Cemetary', image: 'src/images/al-cemetary.png'},
+  {name: 'Al Mazrah City East', image: 'src/images/al-city-east.png'},
+  {name: 'Al Mazrah City West', image: 'src/images/al-city-west.png'},
+  {name: 'Village on the east border', image: 'src/images/al-east-end.png'},
+  {name: 'Fortress', image: 'src/images/fortress.png'},
+  {name: 'Hydro Electric', image: 'src/images/al-hydro-electric.png'},
+  {name: 'Oasis', image: 'src/images/al-oasis.png'},
+  {name: 'Observatory', image: 'src/images/al-observatory.png'},
+  {name: 'Port', image: 'src/images/al-port.png'},
+  {name: 'Quarry', image: 'src/images/al-quarry.png'},
+  {name: 'Rohan Oil', image: 'src/images/al-rohan-oil.png'},
+  {name: 'Sa\'id City', image: 'src/images/al-said-city.png'},
+  {name: 'Sarrif Bay', image: 'src/images/al-sarrif-bay.png'},
+  {name: 'Sawah Village', image: 'src/images/al-sawah-village.png'},
+  {name: 'Sharim Pass', image: 'src/images/al-sharim-pass.png'},
+  {name: 'Taraq Village', image: 'src/images/al-taraq-village.png'},
+];
+
 const dropZones = [
   {name: 'Airfield', image: 'src/images/caldera-airfield.png'},
   {name: 'Arsenal', image: 'src/images/caldera-arsenal.png'},
