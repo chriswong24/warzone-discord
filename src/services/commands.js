@@ -110,7 +110,7 @@ function _getUserInfo(author, args, userInfo) {
 }
 
 function _drop(author, args) {
-  const randomDropZone = randomElementFromArray(constants.dropZones)
+  const randomDropZone = randomElementFromArray(constants.alMazrahDropZones)
   return {msg: randomDropZone.name, options: {files: [randomDropZone.image]}}
 }
 

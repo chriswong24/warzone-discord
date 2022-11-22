@@ -152,6 +152,7 @@ const oldDropZones = [
 module.exports = {
   currentSeason,
   dropZones,
+  alMazrahDropZones,
   gameModePrecedence,
   gameModes,
   platforms,
